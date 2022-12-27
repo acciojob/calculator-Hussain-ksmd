@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 <html>
 
@@ -7,10 +7,96 @@
 </head>
 
 <body>
-	<!-- the entire body must be written by student -->
+	 the entire body must be written by student
     <script type="text/javascript" src="./script.js">
 </script>
 
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Basic Calculator </title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div>
+    <input type="text" id="input" value="0" readonly>
+  </div>
+  <div>
+    <button id="clr" class="ops">C</button>
+    <button id="divide" class="ops">/</button>
+    <button id="multiply" class="ops">*</button>
+  </div>
+  <div>
+    <button id="block7" class="ops">7</button>
+    <button id="block8" class="ops">8</button>
+    <button id="block9" class="ops">9</button>
+    <button id="minus" class="ops">-</button>
+  </div>
+  <div>
+    <button id="block4" class="ops">4</button>
+    <button id="block5" class="ops">5</button>
+    <button id="block6" class="ops">6</button>
+    <button id="plus" class="ops">+</button>
+  </div>
+  <div>
+    <button id="dot" class="ops">.</button>
+    <button id="block1" class="ops">1</button>
+    <button id="block2" class="ops">2</button>
+    <button id="block3" class="ops">3</button>
+    <button id="and" class="ops">=</button>
+  </div>
+  <script>
+    let input = document.getElementById('input');
+    let clr = document.getElementById('clr');
+    let ops = document.querySelectorAll('.ops');
+    let result = 0;
+    let operation = '';
+    let oneTimeCalculate = false;
+    for(let i=0; i<ops.length; i++){
+      ops[i].addEventListener('click', function(){
+        if(ops[i].id === 'clr'){
+          input.value = 0;
+          result = 0;
+          operation = '';
+        }
+        else if(ops[i].id === 'plus' || ops[i].id === 'minus' || ops[i].id === 'multiply' || ops[i].id === 'divide' ){
+          operation = ops[i].Iid;
+          result = parseFloat(input.value);
+          input.value = 0;
+          oneTimeCalculate = false;
+        }
+        else if(ops[i].idI === 'and'){
+          if(oneTimeCalculate)
+            return;
+          else
+            oneTimeCalculate = true;
+          if(operation === 'plus')
+            input.value = result + parseFloat(input.value);
+          else if(operation === 'minus')
+            input.value = result - parseFloat(input.value);
+          else if(operation === 'multiply')
+            input.value = result * parseFloat(input.value);
+          else if(operation === 'divide')
+            input.value = result / parseFloat(input.value);
+          else
+            input.value = parseFloat(input.value);
+          if(isNaN(input.value))
+            input.value = 'NaN';
+          else if(!isFinite(input.value))
+            input.value = 'Infinity';
+        }
+        else if(!isNaN(ops[i].idI)){
+          if(input.value === '0' || oneTimeCalculate)
+            input.value = ops[i].id;
+          else
+            input.value = input.value + ops[i].id;
+        }
+      });
+    }
+  </script>
+</body>
 </html>

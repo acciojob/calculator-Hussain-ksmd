@@ -1,2 +1,15 @@
 
 /* Your CSS Code here. */
+#input{
+    width: 220px;
+    height: 40px;
+    font-size: 25px;
+  }
+  .ops{
+    width: 70px;
+    height: 70px;
+    font-size: 25px;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+  }
